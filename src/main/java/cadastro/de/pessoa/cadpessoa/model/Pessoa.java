@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -25,6 +27,7 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "o nome nao pode ser vazio")
     private String nome;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -32,6 +35,7 @@ public class Pessoa {
 
     private String cpf;
 
+    @Email
     private String email;
 
     private String telefone;
