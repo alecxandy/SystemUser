@@ -27,7 +27,7 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "o nome nao pode ser vazio")
+    @NotBlank(message = "o campo nome não pode ser vazio")
     private String nome;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -36,6 +36,7 @@ public class Pessoa {
     private String cpf;
 
     @Email
+    @NotBlank
     private String email;
 
     private String telefone;
