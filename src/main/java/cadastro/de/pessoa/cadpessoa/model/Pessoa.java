@@ -1,21 +1,16 @@
 package cadastro.de.pessoa.cadpessoa.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Objects;
 
-
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -33,25 +28,22 @@ public class Pessoa {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataNascimento;
 
+    @NotBlank(message = "o campo nome não pode ser vazio")
+    @CPF
     private String cpf;
 
     @Email
-    @NotBlank
+    @NotBlank(message = "o campo nome não pode ser vazio")
     private String email;
 
+    @NotBlank(message = "o campo nome não pode ser vazio")
     private String telefone;
 
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @NotNull(message = "Selecione uma cidade")
+    private Cidade cidade;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Pessoa)) return false;
-        Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(getId(), pessoa.getId()) && Objects.equals(getNome(), pessoa.getNome()) && Objects.equals(getDataNascimento(), pessoa.getDataNascimento()) && Objects.equals(getCpf(), pessoa.getCpf()) && Objects.equals(getEmail(), pessoa.getEmail()) && Objects.equals(getTelefone(), pessoa.getTelefone());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getNome(), getDataNascimento(), getCpf(), getEmail(), getTelefone());
-    }
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @NotNull(message = "Selecione um departamento")
+    private Departamento departamento;
 }
