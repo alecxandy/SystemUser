@@ -1,27 +1,15 @@
 package cadastro.de.pessoa.cadpessoa.comand;
 
-import cadastro.de.pessoa.cadpessoa.model.Cidade;
-import cadastro.de.pessoa.cadpessoa.model.Departamento;
-import cadastro.de.pessoa.cadpessoa.model.Pessoa;
-import cadastro.de.pessoa.cadpessoa.repository.CidadeRepository;
-import cadastro.de.pessoa.cadpessoa.repository.DepartamentoRepository;
 import cadastro.de.pessoa.cadpessoa.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-
 @Component
 @Transactional
 public class PopularNoBanco implements CommandLineRunner {
 
-    @Autowired
-    private DepartamentoRepository departamentoRepository;
-
-    @Autowired
-    private CidadeRepository cidadeRepository;
 
     @Autowired
     private PessoaRepository pessoaRepository;

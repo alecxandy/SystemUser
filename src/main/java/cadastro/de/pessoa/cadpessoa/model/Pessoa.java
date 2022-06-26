@@ -39,11 +39,4 @@ public class Pessoa {
     @NotBlank(message = "o campo nome não pode ser vazio")
     private String telefone;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @NotNull(message = "Selecione uma cidade")
-    private Cidade cidade;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @NotNull(message = "Selecione um departamento")
-    private Departamento departamento;
 }

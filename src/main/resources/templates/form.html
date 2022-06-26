@@ -36,11 +36,6 @@
         <span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}" class="text-danger"></span>
         <!--validação do spring-->
         <input type="text" th:field="*{telefone}" placeholder="Telefone" class="form-control mb-4 col-4">
-        <!--seleção de cidades-->
-        <select th:field="*{cidade}" class="form-control mb-4 col-4">
-            <option th:each="cidade: ${cidade}" th:value="${cidade.id}"
-                    th:text="${cidade.nome} + '(' + ${cidade.uf} + ')'"></option>
-        </select>
         <button type="submit" class="btn btn-info col-2">Salvar</button>
     </form>
     <hr>
